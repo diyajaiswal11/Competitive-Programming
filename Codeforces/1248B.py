@@ -1,0 +1,6 @@
+n=int(input())
+a=list(map(int,input().split()))
+a.sort()
+a1=sum(a[:n//2]) 
+a2=sum(a[n//2:]) 
+print(a1**2+a2**2)
