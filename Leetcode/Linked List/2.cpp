@@ -16,21 +16,21 @@ using namespace std;
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* a, ListNode* b) {
-        ListNode* p = new ListNode(0);
-        ListNode* ans=p;
+        ListNode* p = new ListNode(0); //here p points to first node which contains 0
+        ListNode* ans=p;  //ans points to same as p
         int carry=0;
         while(a || b || carry)
         {
            int aval=a?a->val:0; 
             int bval=b?b->val:0; 
            ans->next=new ListNode((aval+bval+carry)%10);
-            ans=ans->next;
+            ans=ans->next; //ans moves forward but p still stays at first node
             carry=(aval+bval+carry)/10;
             if(a)
                 a=a->next;
             if(b)
                 b=b->next;
         }
-        return p->next;
+        return p->next; //next because first node stores 0, and our answer starts from next node
     }
 };
