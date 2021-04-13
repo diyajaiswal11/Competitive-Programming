@@ -1,21 +1,22 @@
 //https://leetcode.com/problems/find-the-duplicate-number/
 
 
-#include <bits/stdc++.h> 
-using namespace std;
 class Solution {
 public:
     int findDuplicate(vector<int>& a) {
-        sort(a.begin(),a.end());
-        int l=a.size(),i=0;
-        for(i=1;i<l;i++)
+        
+        int n=a.size();
+        map<int,int>m;
+        for(int i=0;i<n;i++)
         {
-            if(a[i]==a[i-1])
-            {
-                break;
-            }
-                
+            m[a[i]]+=1;
+        } 
+        for(auto i:m)
+        {
+            //cout<<i.first<<" "<<i.second<<endl;
+            if(i.second>1)
+                return i.first;
         }
-      return a[i];
+        return -1;
     }
 };

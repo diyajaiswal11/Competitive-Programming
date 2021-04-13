@@ -8,26 +8,19 @@ class Solution {
 public:
     int majorityElement(vector<int>& a) {
         
-        int n=a.size(),c=0,ans=0;
-        if(n%2==0)
-            n=n/2;
-        else
-            n=n/2+1;
-        set<int> s; 
-        for(int x:a) 
+        int n=a.size(),maj=0,c=1;
+        for(int i=1;i<n;i++)
         {
-            s.insert(x);
-        } 
-        for(auto it=s.begin(); it != s.end(); ++it) 
-        {
-            c=count(a.begin(), a.end(),*it);
-            //cout<<c<<" ";
-            if(c>=n)
+            if(a[maj]==a[i])
+                c+=1;
+            else
+                c-=1;
+            if(c==0)
             {
-                ans=*it;
-                break;
+                maj=i;
+                c=1;
             }
         }
-        return ans;
+        return a[maj];
     }
 };

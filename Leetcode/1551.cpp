@@ -7,17 +7,18 @@ using namespace std;
 class Solution {
 public:
     int minOperations(int n) {
-        if(n==1)
-            return 0;
-        int c=2;
+        
+        int ans=0;
         if(n%2==0)
-            return (n/2)*(n/2);
+        {
+            for(int i=1;i<n;i+=2)
+                ans+=i;
+        }
         else
         {
-            n=(n+1)/2;
-            return n*n-n;
+            for(int i=2;i<n;i+=2)
+                ans+=i;
         }
-            
-        
+        return ans;
     }
 };
